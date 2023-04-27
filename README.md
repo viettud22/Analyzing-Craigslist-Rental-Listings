@@ -5,14 +5,14 @@ I’ve been looking to make a move recently. And I want to have a brief understa
 
 ### My first step is *Getting the Data* 
 
-What I first need is the URL at the first page that want to pull data from added any extra arguments. I need URL for the apt/housing section of all available cities on Craiglist. And then checked the "search titles only",“has image” filter to narrow down the search.
+What I first need is the URL at the first page that want to pull data from added any extra arguments. I need URL for the apt/housing section of all available cities on Craiglist. And then checked the “has image”,"condo" and "apartment" filter to narrow down the search.
 
 ![image](https://user-images.githubusercontent.com/66462812/234837123-d1a73f89-5fc9-42d8-873c-46fc4960b5d9.png)
 
 ### Scraping Search Results Beyond the First Page
 
 Here are an example of the "base" URL: 
-https://vancouver.craigslist.org/search/apa?availabilityMode=1&hasPic=1&rent_period=3&srchType=T#search=1~gallery~0~0
+https://vancouver.craigslist.org/search/apa?hasPic=1&housing_type=1&housing_type=2#search=1~list~0~0
 
 Since Craigslist only shows 120 results per page, I think of using Selenium as solution. Selenium can also be used to navigate to the next page. Selenium automates web browser interaction from python.
 ![image](https://user-images.githubusercontent.com/66462812/234835921-aa24e5d9-f819-42af-8ed1-8f62bd763bb0.png)
