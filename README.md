@@ -1,17 +1,12 @@
 # Analyzing Current Renting Lists on Craigslist 
-I’ve been looking to make a move recently. And I want to have a brief understand of current rental pricing lists all over Canada. Therefore, I started to focus on the population of housing on Craiglist - a popular platform for long-term rental. 
+I’ve been looking to make a move recently. And I want to have a brief understand of current rental pricing lists of apartment/condo in Canada. Therefore, I started to focus on the population of housing on Craiglist - a popular platform for long-term rental.
 
 ## Web Scraping Craigslist
 
 ### My first step is *Getting the Data* 
+What I first need is the URL at the first page that want to pull data from added any extra arguments. First I chose the apt/housing section and then checked the “has image”,"condo" and "apartment" filter to narrow down the search. Let's look at listings in Vancouver area first!
 
-What I first need is the URL at the first page that want to pull data from added any extra arguments. I need URL for the apt/housing section of all available cities on Craiglist. And then checked the “has image”,"condo" and "apartment" filter to narrow down the search.
-
-![image](https://user-images.githubusercontent.com/66462812/234837123-d1a73f89-5fc9-42d8-873c-46fc4960b5d9.png)
-
-### Scraping Search Results Beyond the First Page
-
-Here are an example of the "base" URL: 
+What I did is start scraping search results beyond the First Page. Here are an example of the "base" URL: 
 https://vancouver.craigslist.org/search/apa?hasPic=1&housing_type=1&housing_type=2#search=1~list~0~0
 
 Since Craigslist only shows 120 results per page, I think of using Selenium as solution. Selenium can also be used to navigate to the next page. Selenium automates web browser interaction from python.
@@ -54,6 +49,16 @@ The final result looks like this, which is way more modular and easy to analyze:
 ![image](https://user-images.githubusercontent.com/66462812/234920200-459aae04-5e03-4a4c-b9c7-64362b89dafd.png)
 
 ![image](https://user-images.githubusercontent.com/66462812/234920370-dd00ab14-5847-416d-b59f-a865a35b8883.png)
+
+## Exploring Apartments All Over Canada
+
+The script can be modified to pull from any region, category, property type, etc. So I just need to change the base URL to other available cities on Craigslist and then re-run the script. In the scrip, I grouped other cities except for Vancouver and Toronto to reduce the times we need to repeat the script:
+
+![image](https://user-images.githubusercontent.com/66462812/234837123-d1a73f89-5fc9-42d8-873c-46fc4960b5d9.png)
+
+After getting data of all cities, I imported it to Tableau to create a more interactive visualization:
+https://public.tableau.com/views/AnalyzingCurrentRentingListsonCraigslist/Dashboard?:language=en-US&:display_count=n&:origin=viz_share_link
+
 
 
 
