@@ -1,33 +1,38 @@
-# Analyzing Current Renting Lists on Craigslist 
-I’ve been looking to make a move recently. And I want to have a brief understand of current rental pricing lists of apartment/condo in Canada. Therefore, I started to focus on the population of housing on Craiglist - a popular platform for long-term rental.
+# Analyzing Current Rental Listings on Craigslist
+I have been actively searching for a new place to live and wanted to gain a better understanding of the current rental pricing for apartments and condos in Canada. To accomplish this, I decided to focus on the housing population listed on Craigslist, a popular platform for long-term rentals.
 
 ## Web Scraping Craigslist
 
 ### My first step is *Getting the Data* 
-What I first need is the URL at the first page that want to pull data from added any extra arguments. First I chose the apt/housing section and then checked the “has image”,"condo" and "apartment" filter to narrow down the search. Let's look at listings in Vancouver area first!
+To begin, I needed the URL for the first page from which I wanted to pull data, without any additional arguments. Initially, I selected the "apt/housing" section and applied filters such as "has image," "condo," and "apartment" to narrow down the search. Let's start by examining the listings in the Vancouver area!
 
-What I did is start scraping search results beyond the First Page. Here are an example of the "base" URL: 
+I employed web scraping techniques to retrieve search results beyond the first page. Here's an example of the "base" URL:
 https://vancouver.craigslist.org/search/apa?hasPic=1&housing_type=1&housing_type=2#search=1~list~0~0
 
-Since Craigslist only shows 120 results per page, I think of using Selenium as solution. Selenium can also be used to navigate to the next page. Selenium automates web browser interaction from python.
+Since Craigslist displays only 120 results per page, I utilized Selenium as a solution. Selenium enables automated web browser interaction with Python, allowing me to navigate to the next page.
+
 ![image](https://user-images.githubusercontent.com/66462812/234835921-aa24e5d9-f819-42af-8ed1-8f62bd763bb0.png)
 
 ## Cleaning and Manipulating Data
 
-### Developed function with significant accuracy to extract meaningful data
+### Developing a Function for Accurate Data Extraction
+
 Following is the data I have extracted from one of the listing pages. 
 ![image](https://user-images.githubusercontent.com/66462812/234839167-dab56716-a94f-4672-8523-6a778dbe28a3.png)
 
-It's bad that all the information was attached together. Hence, to make use of this chunk information, I added a function called *extract_post_info()* to extrapolate Title/City/Address/Date/Price/Number-of-Bedroom to put them into seperate lists then later into a csv file.
+To extract meaningful information, I developed a function called extract_post_info(). The function effectively separated the attached information, including Title, City, Address, Date, Price, and Number of Bedrooms, into separate lists. These lists were later compiled into a CSV file for easier analysis.
 
 ### Further Cleaning
-1. Drop duplicated postings
-2. Keep only postings of 1/2/3 bedrooms since apartments with four or more bedrooms are very rare
-3. Convert Square Feet to Nan when its more than 3000 because most apartment size can't exceed 3000sqft
+
+1. Removed duplicated postings
+2.Filtered postings to include only those with 1, 2, or 3 bedrooms, as apartments with four or more bedrooms are very rare
+3.Converted Square Feet to NaN when the value exceeded 3000, as most apartments do not exceed that size
+
 ![image](https://user-images.githubusercontent.com/66462812/234918006-444b4bd4-9cc7-4c75-9b51-ae6b44a19a43.png)
 
-### Remove Outliers
-I removed outliers because it can have a big impact on statistical analyses and skew the results. Most outliers postings was listed by wrong-category-housing/input by mistake 
+### Removing Outliers
+
+I removed outliers from the dataset to minimize their impact on statistical analyses and prevent skewed results. Most outliers postings was listed by wrong-category-housing/input by mistake 
 
 ![image](https://user-images.githubusercontent.com/66462812/234915688-961eddc4-6ea9-401e-b306-6212219a2d2d.png)
 
@@ -52,12 +57,19 @@ The final result looks like this, which is way more modular and easy to analyze:
 
 ## Exploring Apartments All Over Canada
 
-The script can be modified to pull from any region, category, property type, etc. So I just need to change the base URL to other available cities on Craigslist and then re-run the script. In the scrip, I grouped other cities except for Vancouver and Toronto to reduce the times we need to repeat the script:
+The script I developed can be easily modified to gather data from any region, category, or property type on Craigslist. By simply changing the base URL to the desired city, we can obtain rental information from various locations. In the script, I have already grouped cities other than Vancouver and Toronto to minimize the need for repetitive execution:
 
 ![image](https://user-images.githubusercontent.com/66462812/234837123-d1a73f89-5fc9-42d8-873c-46fc4960b5d9.png)
 
-After getting data of all cities, I imported it to Tableau to create a more interactive visualization:
+After collecting data from multiple cities, I imported the dataset into Tableau to create an interactive visualization. You can explore the visualization using the following link:
+
 https://public.tableau.com/views/AnalyzingCurrentRentingListsonCraigslist/Dashboard?:language=en-US&:display_count=n&:origin=viz_share_link
+This visualization provides a comprehensive overview of rental listings across Canada, allowing you to compare and analyze various cities.
+
+
+
+
+
 
 
 
